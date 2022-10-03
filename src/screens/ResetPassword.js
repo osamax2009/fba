@@ -63,12 +63,8 @@ const styles = StyleSheet.create({
       alignItems:'center'
     },
     image:{
-        width: 150,
-        height: 150,
-        borderRadius: 50,
-        borderWidth: 3,
-        borderColor: COLOR.yellow,
-
+      flex:1,
+      backgroundColor:COLOR.blue,
       },
       container:{
         flex:1,

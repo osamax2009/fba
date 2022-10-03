@@ -58,6 +58,20 @@ const VideoContent = () =>{
             thimbnail: images.Logo,
             status: 'uploaded',
             date: '1 jan 2022'
+        },
+        {
+            id:7,
+            content:'This is Testing List with Content To show',
+            thimbnail: images.Logo,
+            status: 'uploaded',
+            date: '1 jan 2022'
+        },
+        {
+            id:7,
+            content:'This is Testing List with Content To show',
+            thimbnail: images.Logo,
+            status: 'uploaded',
+            date: '1 jan 2022'
         }
     ]
     return (
@@ -70,7 +84,7 @@ const VideoContent = () =>{
                         console.log(value);
                         if(value === 'u'){
                             return setDataList(statusList.filter(e=>e.status === 'uploaded'));
-                        }else{
+                        }else if (value === 'd'){
                             return setDataList(statusList.filter(e=>e.status === 'downloaded')); 
                         }
                         }}
@@ -125,7 +139,7 @@ const VideoContent = () =>{
                         // />
                         // }else{
                         return <VideoCard
-                        imageSource={images.Logo}
+                        imageSource={images.VideoThumbnail}
                         content={item.content}
                         status={item.status}
                         date={item.date}
@@ -159,7 +173,7 @@ const styles =StyleSheet.create({
         alignItems:"center"
     },
     list:{
-        margin:20,
+        flex:1,
     },
     listTab:{
         width:'80%',

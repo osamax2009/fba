@@ -8,22 +8,31 @@ const SetRadius = () => {
     return (
             <SafeAreaView style={styles.container}>
               <View style={styles.header}>
-                  <Text style={{  fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Set Radius</Text>
+                  <Text style={{ fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Set Radius</Text>
                   <Image source={images.Logo} style={styles.image} />
               </View>
               <View style={styles.wrapper}>
               <View style={{width:'100%', height:250, justifyContent:'center', alignItems:'center'}}>
+              {/* <CircularSlider value={radius} onChange={setRadius(value)} /> */}
                 <CircleSlider 
-                textSize={2}
-                btnRadius={20} 
-                dialRadius={100}
-                dialWidth={10}
-                meterColor={COLOR.yellow}
-                strokeWidth={10}
-                textColor={COLOR.yellow}
-                value={radius}
-                onValueChange={value=>setRadius(value)}
+                  textSize={2}
+                  btnRadius={20} 
+                  dialRadius={100}
+                  dialWidth={10}
+                  meterColor={COLOR.yellow}
+                  strokeWidth={10}
+                  textColor={COLOR.yellow}
+                  value={radius}
+                  onValueChange={value=>setRadius(value)}
                  />
+                 {/* <CircleSlider onChange={()=>setRadius(value)} /> */}
+                 {/* <ArcSlider
+                    value={radius}
+                    onChange={()=>'hello'}
+                    trackColor={"red"}
+                    showThumbText
+                    showText
+                  /> */}
                  <Text style={{color:COLOR.blue, position:'absolute', fontSize:25,fontWeight:'bold'}}>{radius} Km</Text>
               </View>
                 <Pressable style={({ pressed }) => [
@@ -50,11 +59,8 @@ const styles = StyleSheet.create({
       alignItems:'center'
     },
     image:{
-        width: 150,
-        height: 150,
-        borderRadius: 50,
-        borderWidth: 3,
-        borderColor: COLOR.yellow,
+      flex:1,
+      resizeMode:'contain',
       },
       container:{
         flex:1,

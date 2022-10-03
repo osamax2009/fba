@@ -3,7 +3,7 @@ import { Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, 
 import PhoneInput from 'react-native-phone-number-input';
 import images from '../constants/images';
 import { COLOR, FONTS, height } from '../constants/theme';
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     const[enableShift, setEnableShift] = useState(false);
     
     return (
@@ -37,7 +37,7 @@ const SignUp = () => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{}}>
+                         ]} onPress={()=>{navigation.push('Otp')}}>
                     <Text style={styles.text}>Send OTP</Text>
                 </Pressable>
           
@@ -58,12 +58,8 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   image:{
-      width: 150,
-      height: 150,
-      borderRadius: 50,
-      borderWidth: 3,
-      borderColor: COLOR.yellow,
-
+    flex:1,
+    resizeMode:'contain',
     },
     container:{
       flex:1,

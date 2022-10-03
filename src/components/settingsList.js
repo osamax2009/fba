@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Text, View, StyleSheet, Pressable } from "react-native";
+import Icon from "react-native-ico";
 import { COLOR } from "../constants/theme";
 
 const SettingsList = (props) =>{
@@ -10,7 +11,8 @@ const SettingsList = (props) =>{
           android_ripple ={{backgroundColor: 'red', borderless: true}}
           onPress={props.navigate}
           >
-            <Image style={styles.image} source={props.imageSource}/>
+            {/* <Image style={styles.image} source={props.imageSource}/> */}
+            <Icon name={props.name} group={props.group} color={props.color}/>
             <Text style={styles.textStyle}>{props.text}</Text>
             </Pressable>
         </View>

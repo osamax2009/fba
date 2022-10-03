@@ -17,7 +17,7 @@ const Splash = ({navigation}) =>{
                 <Image style={styles.image} source={images.Logo}></Image>
                 <Separator />
                 <Separator />
-                <ActivityIndicator />
+                <ActivityIndicator size="large"/>
                 {/* <Pressable style={({ pressed }) => [
                               {
                                 backgroundColor: pressed
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     image:{
-        width: 200,
-        height: 200
+      flex:1,
+      resizeMode:'contain',
     },
     button: {
         flexDirection:'row',

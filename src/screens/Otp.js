@@ -3,7 +3,7 @@ import { Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, 
 import PhoneInput from 'react-native-phone-number-input';
 import images from '../constants/images';
 import { COLOR, FONTS, height } from '../constants/theme';
-const Otp = () => {
+const Otp = ({navigation}) => {
     const[enableShift, setEnableShift] = useState(false);
     const [numOne, setNumOne] = useState('');
     const [numTwo, setNumTwo] = useState('');
@@ -16,10 +16,7 @@ const Otp = () => {
 
     useEffect(()=>{
       num1.current.focus();
-    }
-    ,[num1]);
-
-
+    },[num1]);
     return (
      <KeyboardAvoidingView 
      keyboardVerticalOffset={-200}
@@ -118,7 +115,7 @@ const Otp = () => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{}}>
+                         ]} onPress={()=>{navigation.push('Register')}}>
                     <Text style={styles.text}>Done</Text>
                 </Pressable>          
             </View>
@@ -138,11 +135,8 @@ const styles = StyleSheet.create({
       alignItems:'center'
     },
     image:{
-        width: 150,
-        height: 150,
-        borderRadius: 50,
-        borderWidth: 3,
-        borderColor: COLOR.yellow,
+      flex:1,
+      resizeMode:'contain',
       },
       container:{
         flex:1,

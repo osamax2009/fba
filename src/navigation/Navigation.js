@@ -48,13 +48,6 @@ const Navigation=()=>{
           headerShown: false,
           }}
         ></Stack.Screen>
-          <Stack.Screen name='VideoContent' component={VideoContent}
-          options={{
-          title: 'Videos',
-          headerStyle: Styles.header,
-          headerTintColor: '#ffffff'
-          }}
-        ></Stack.Screen>
         <Stack.Screen name='AddFamilyMembers' component={AddFamilyMembers}
           options={{
           title: 'Add Family Members',
@@ -62,7 +55,6 @@ const Navigation=()=>{
           headerTintColor: '#ffffff'
           }}
         ></Stack.Screen>
-
           <Stack.Screen name='SetRadius' component={SetRadius}
           options={{
           headerShown: false,
@@ -76,7 +68,7 @@ const Navigation=()=>{
         </>
       ):(
         <>
-                  <Stack.Screen name='SignIn' component={Signin}
+          <Stack.Screen name='SignIn' component={Signin}
           options={{
           headerShown: false,
           title: 'SignIn',
@@ -92,7 +84,7 @@ const Navigation=()=>{
           headerTintColor: '#ffffff'
           }}
         ></Stack.Screen>
-        <Stack.Screen name='SplashLogo' component={Otp}
+        <Stack.Screen name='Otp' component={Otp}
           options={{
           headerShown: false,
           title: 'SignIn',
@@ -106,7 +98,7 @@ const Navigation=()=>{
           title: 'SignIn',
           headerStyle: Styles.header,
           }}></Stack.Screen>
-                    <Stack.Screen name='SignUp' component={SignUp}
+          <Stack.Screen name='SignUp' component={SignUp}
           options={{
           headerShown: false,
           title: 'SignIn',

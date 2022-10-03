@@ -9,52 +9,58 @@ import Splash from '../screens/SplashLogo';
 import Settings from '../screens/Settings';
 import AddRequest from '../components/invitationCard';
 import AddRequests from '../screens/AddRequests';
-
+import VideoContent from '../screens/Videos';
+import Icon from 'react-native-ico-material-design';
 const Tab = createBottomTabNavigator();
 
 const Tabs = () =>{
     return (
         <Tab.Navigator initialRouteName='Home' {...{ screenOptions }} >
+        <Tab.Screen
+                name='Home'
+                component={Home}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({focused}) => {
+                        return <>
+                            <Icon name="home-button" height="30" width="30"
+                                color={focused? COLOR.blue: 'white'}
+                            />
+                        </> 
+                    }
+                        
+                }}
+            />
                 <Tab.Screen
-                name='Add Requests'
+                name='Requests'
                 component={AddRequests}
                 options={{
                     headerTitleStyle: styles.headerTitle,
                     headerTintColor: '#ffffff',
                     headerStyle: styles.header,
-                    tabBarIcon: ({focused}) => (
-                        <Image 
-                        source={images.Logo}
-                        resizeMode='contain'
-                        style={
-                          [ {
-                               width: 30,
-                               height: 30,
-                               tintColor: focused ? COLOR.blue : 'white'
-                           }]
-                        }
-                       />
-                    )
+                    tabBarIcon: ({focused}) => {
+                        return <>
+                            <Icon name="two-men" height="30" width="30"
+                                color={focused? COLOR.blue: 'white'}
+                            />
+                        </> 
+                    }
                 }}
             />
                 <Tab.Screen
-                name='Home'
-                component={Home}
+                name='Videos'
+                component={VideoContent}
                 options={{
-                    headerShown: false,
-                    tabBarIcon: ({focused}) => (
-                        <Image 
-                        source={images.Logo}
-                        resizeMode='contain'
-                        style={
-                           {
-                               width: 30,
-                               height: 30,
-                               tintColor: focused ? COLOR.blue : 'white'
-                           }
-                        }
-                       />
-                    )
+                    headerTitleStyle: styles.headerTitle,
+                    headerTintColor: '#ffffff',
+                    headerStyle: styles.header,
+                    tabBarIcon: ({focused}) => {
+                        return <>
+                            <Icon name="videocam-filled-tool" height="30" width="30"
+                            color={focused? COLOR.blue: 'white'}
+                            />
+                        </> 
+                    }
                 }}
             />
                 <Tab.Screen
@@ -64,20 +70,13 @@ const Tabs = () =>{
                     headerTitleStyle: styles.headerTitle,
                     headerTintColor: '#ffffff',
                     headerStyle: styles.header,
-                    tabBarIcon: ({focused, color}) => ( 
-                        <Image 
-                        source={images.Logo}
-                        resizeMode='contain'
-                        style={
-                           {
-                               width: 30,
-                               height: 30,
-                               tintColor: focused ? COLOR.blue : 'white'
-                           }
-                        }
-                       />
-                       
-                    )
+                    tabBarIcon: ({focused, color}) => {
+                        return <>
+                            <Icon name="settings-cogwheel-button" height="30" width="30"
+                            color={focused? COLOR.blue: 'white'}
+                            />
+                        </> 
+                    }
                 }}
 
             />
@@ -98,6 +97,7 @@ const screenOptions =  {
     tabBarItemStyle:{
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
+        padding:5
     },
     tabBarLabelStyle:{
         fontSize: 12,

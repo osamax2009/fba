@@ -10,13 +10,13 @@ const Settings =({navigation}) =>{
         <SafeAreaView style={{flex:1}}>
         <View style={styles.container}>
           <View style={styles.wrapper}>
-            <SettingsList imageSource={images.Logo} text='Set Radius' navigate={()=>navigation.navigate('SetRadius')}/>
-            <SettingsList imageSource={images.Logo} text='Family Members' navigate={()=>navigation.navigate('AddFamilyMembers')}/>
-            <SettingsList imageSource={images.Logo} text='Change Home Location'/>
-            <SettingsList imageSource={images.Logo} text='Emergency Number'/>
-            <SettingsList imageSource={images.Logo} text='Terms & Conditions'navigate={()=>navigation.navigate('Terms')}/>
-            <SettingsList imageSource={images.Logo} text='About'/>
-            <SettingsList imageSource={images.Logo} text='Logout' navigate={Logout}/>
+            <SettingsList name="map-location" group="lodgicons" color={COLOR.blue} text='Set Radius' navigate={()=>navigation.navigate('SetRadius')}/>
+            <SettingsList name="group-profile-users" group="font-awesome" color={COLOR.blue} text='Family Members' navigate={()=>navigation.navigate('AddFamilyMembers')}/>
+            <SettingsList name="online-location" group="lodgicons" color={COLOR.blue} text='Change Home Location'/>
+            <SettingsList name="phone-call-button" group="material-design" color={COLOR.blue} text='Emergency Number'/>
+            <SettingsList name="map-location" group="lodgicons" color={COLOR.blue} text='Terms & Conditions'navigate={()=>navigation.navigate('Terms')}/>
+            <SettingsList  name="contract-3" group="file-folder" color={COLOR.blue} text='About'/>
+            <SettingsList name="logout" group="miscellaneous" color={COLOR.blue} text='Logout' navigate={Logout}/>
           </View>
         </View> 
         </SafeAreaView>

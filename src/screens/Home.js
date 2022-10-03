@@ -20,18 +20,18 @@ const Home = () =>{
         <Spinner visible={isLoading}/>
           <View style={styles.header}>
             <Text style={{flex:1, marginLeft:40, fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Home</Text>
-            <Image source={images.Logo} style={styles.image} />
+            <Image source={images.Profile} style={styles.image} />
           </View> 
         <View style={styles.backgroundContainer}>
             <View style={styles.wrapper}>
-              <PoliceAlert imageSource={images.Logo} text='Police' subtext='Interaction Alert'/>
+              <PoliceAlert imageSource={images.Police} text='Police' subtext='Interaction Alert'/>
             </View>
         </View>
         <View style={styles.selectOption}>
-          <Options imageSource={images.Logo} text='SOS' subtext='Friends'/>
-          <Options imageSource={images.Logo} text='SOS' subtext='Family'/>
-          <Options imageSource={images.Logo} text='Safe' subtext='End Call'/>
-          <Options imageSource={images.Logo} text='Call' subtext='Dial Call'/>
+          <Options imageSource={images.Friends} text='SOS' subtext='Friends'/>
+          <Options imageSource={images.Family} text='SOS' subtext='Family'/>
+          <Options imageSource={images.Safe} text='Safe' subtext='End Call'/>
+          <Options imageSource={images.Call} text='Call' subtext='Dial Call'/>
         </View>
         </SafeAreaView>
     )

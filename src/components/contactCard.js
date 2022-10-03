@@ -12,7 +12,7 @@ const ContactCard = ({imageSource, contactName, contactNumber}) =>{
                 <Text style={styles.name}>{contactName}</Text>
                 <Text style={styles.number}>{contactNumber}</Text>
             </View>
-            <Image source={images.Logo} style={styles.checkBox}/>
+            <Image source={images.Tick} style={styles.checkBox}/>
         </View>
     )
 }

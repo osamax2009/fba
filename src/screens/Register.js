@@ -3,6 +3,7 @@ import { Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, 
 import PhoneInput from 'react-native-phone-number-input';
 import images from '../constants/images';
 import { COLOR, FONTS, height } from '../constants/theme';
+
 const Register = ({navigation}) => {
     const[enableShift, setEnableShift] = useState(false);
     
@@ -20,8 +21,8 @@ const Register = ({navigation}) => {
             <View style={{height:height+150}}> 
               <View style={styles.wrapper}>
                 <View style={styles.imageWrapper}>
-                        <Image source={images.Logo} style={styles.image} />
-                        <Image source={images.Logo} style={styles.imageSelector} />
+                        <Image source={images.outerBorder} style={styles.image} />
+                        <Image source={images.Camera} style={styles.imageSelector} />
                 </View>
               <TextInput
               placeholderTextColor={COLOR.blue}
@@ -78,10 +79,9 @@ const Register = ({navigation}) => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{ navigation.push('SignUp');}}>
+                         ]} onPress={()=>{ navigation.push('SignIn');}}>
                     <Text style={styles.text}>SignUp </Text>
                 </Pressable>
-          
             </View>
             </View>
           </SafeAreaView>
@@ -117,9 +117,6 @@ const styles = StyleSheet.create({
         height:40,
         bottom:0,
         right:0,
-        borderRadius: 100,
-        borderWidth: 2,
-        borderColor: 'black'
     },
     container:{
       flex:1,

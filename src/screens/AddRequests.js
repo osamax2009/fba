@@ -52,7 +52,7 @@ const AddRequests = () =>{
                         // />
                         // }else{
                         return <AddRequest
-                        imageSource={images.Logo}
+                        imageSource={images.Profile}
                         contactName={item.name}
                         />
 
