@@ -10,6 +10,77 @@ const Signin = ({navigation}) => {
     const [password, setPassword] = useState(null);
     const[enableShift, setEnableShift] = useState(false);
     const {isLoading ,Login} = useContext(AuthContext);
+  const [token, setToken] = useState('');
+  const [json, setJson] = useState('');
+  const [id, setId] = useState('');
+  
+  const passwordlenght = () => {
+    if (pass.length > 7) {
+      return true;
+    } else return false;
+
+    //  Alert.alert("your number is "+phoneNumber);</if>
+  };
+
+ 
+
+  const loginuser = async () => {
+   if (passwordlenght() === false) {
+      setpassValidError('password lenght not enough ');
+    } else {
+     
+    
+      // setLoading(true);
+      try {
+        const response = await fetch(
+          'http://faadminpanel.herokuapp.com/api/auth/login',
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              phone: phone,
+              password: password,
+                     }),
+          },
+        );
+        console.log(phoneNumber);
+         await setJson(response.json());
+        setToken(json._3.token);
+        console.log(json._3.token);
+        setToken(json._3.id);
+        console.log(json._3.token);
+        //  //setData(json.movies);
+      } catch (error) {
+        console.error(error);
+      } finally {
+      if(json._3.status== true) { console.log(' ooooooooooooook ');
+        const userDetails = {
+          user1: {
+            userData: {
+              id: id ,
+            },
+            creds: {
+              phone: phoneNumber,
+              token: token,
+            },
+          },
+        };
+        Login(userDetails);}else{
+          Alert.alert("failed",json.errors,[{text: 'OK', onPress: () => {}
+
+           } ]);
+        }
+      }
+    }
+  };
+
+
+
+
+
     return (
      <KeyboardAvoidingView 
      keyboardVerticalOffset={-200}
@@ -58,7 +129,7 @@ const Signin = ({navigation}) => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>Login(phone, password)}>
+                         ]} onPress={()=>loginuser()}>
                     <Text style={styles.text}>SignIn </Text>
                 </Pressable>
                 <Pressable style={({ pressed }) => [
@@ -68,7 +139,11 @@ const Signin = ({navigation}) => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{ navigation.push('SignUp');}}>
+                         ]} onPress={()=>{ 
+                           //navigation.push('SignUp');
+                           navigation.navigate("Register");
+
+                           }}>
                     <Text style={styles.text}>SignUp </Text>
                 </Pressable>
           

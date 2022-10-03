@@ -1,11 +1,57 @@
-import React, { useState } from 'react';
-import { Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, Text, TextInput, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import React, { useState,useRef } from 'react';
+import { Alert,Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, Text, TextInput, ScrollView, Platform, TouchableOpacity ,ActivityIndicator} from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
 import images from '../constants/images';
 import { COLOR, FONTS, height } from '../constants/theme';
+
+
+
+
 const SignUp = ({navigation}) => {
     const[enableShift, setEnableShift] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState('');
+   
+    const phoneInput = useRef(null);
+    const getPhoneNumber = () => {
+      Alert.alert("your number is "+phoneNumber);
+    };
     
+    const sendOtp = async (phonenumber) => {
+      try {
+        var val = Math.floor(1000 + Math.random() * 9000);
+        getPhoneNumber();
+        setLoading(true);
+       const response = await fetch('http://faadminpanel.herokuapp.com/api/auth/getotp', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          phone: phonenumber,
+          code: val
+        })
+      });
+       const json = await response.json();
+       //setData(json.movies);
+     } catch (error) {
+       console.error(error);
+     } finally {
+
+
+
+     
+      navigation.navigate('Otp', {
+        otp: val,
+        otherParam: phoneNumber,
+      });
+
+
+
+    }
+   }
     return (
      <KeyboardAvoidingView 
      keyboardVerticalOffset={-200}
@@ -14,13 +60,20 @@ const SignUp = ({navigation}) => {
       enabled={enableShift}>
         <ScrollView bounces={false}>
             <SafeAreaView style={styles.container}>
-              <View style={styles.header}>
+
+             
+                <View style={styles.header}>
                   <Text style={{ fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Sign Up</Text>
                   <Image source={images.Logo} style={styles.image} />
                 </View>
-            <View style={{height:height}}> 
+                {isLoading ? <ActivityIndicator/> :(
+                <View style={{height:height}}> 
               <View style={styles.wrapper}>
               <PhoneInput
+               ref={phoneInput}
+               onChangeFormattedText={text => {
+                setPhoneNumber(text);
+              }}
                 defaultCode="US" 
                 placeholder='Phone Number' 
                 textInputStyle={{color: COLOR.blue, padding:0,fontSize: 15}}
@@ -37,12 +90,17 @@ const SignUp = ({navigation}) => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{navigation.push('Otp')}}>
+                         ]} onPress={()=>{
+                            sendOtp(phoneNumber);
+
+
+                           }}>
                     <Text style={styles.text}>Send OTP</Text>
                 </Pressable>
           
             </View>
             </View>
+             )}
           </SafeAreaView>
         </ScrollView>
      </KeyboardAvoidingView>

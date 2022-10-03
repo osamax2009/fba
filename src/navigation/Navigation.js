@@ -40,7 +40,24 @@ const Navigation=()=>{
           headerStyle: Styles.header,
           headerTintColor: '#ffffff'
           }}
-        ></Stack.Screen>
+        >
+
+        </Stack.Screen>
+        // <Stack.Screen name='Register' component={Register}
+        //   options={{
+        //   headerShown: false,
+        //   title: 'SignIn',
+        //   headerStyle: Styles.header,
+        //   headerTintColor: '#ffffff'
+        //   }}
+        // >
+
+
+        // </Stack.Screen>
+
+
+
+
       ): token?(
         <>
         <Stack.Screen name='Tabs' component={Tabs}
@@ -54,7 +71,9 @@ const Navigation=()=>{
           headerStyle: Styles.header,
           headerTintColor: '#ffffff'
           }}
-        ></Stack.Screen>
+        >
+          
+        </Stack.Screen>
           <Stack.Screen name='SetRadius' component={SetRadius}
           options={{
           headerShown: false,

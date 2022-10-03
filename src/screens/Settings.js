@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { SafeAreaView, Text, View, StyleSheet,Image } from "react-native";
 import SettingsList from "../components/settingsList";
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import images from "../constants/images";
 import { COLOR } from "../constants/theme";
 import { AuthContext } from "../context/AuthContext";
@@ -8,7 +9,9 @@ const Settings =({navigation}) =>{
   const {Logout} = useContext(AuthContext);
     return (
         <SafeAreaView style={{flex:1}}>
-        <View style={styles.container}>
+        <ScrollView>
+          <View style={styles.container}>
+       
           <View style={styles.wrapper}>
             <SettingsList name="map-location" group="lodgicons" color={COLOR.blue} text='Set Radius' navigate={()=>navigation.navigate('SetRadius')}/>
             <SettingsList name="group-profile-users" group="font-awesome" color={COLOR.blue} text='Family Members' navigate={()=>navigation.navigate('AddFamilyMembers')}/>
@@ -19,6 +22,7 @@ const Settings =({navigation}) =>{
             <SettingsList name="logout" group="miscellaneous" color={COLOR.blue} text='Logout' navigate={Logout}/>
           </View>
         </View> 
+        </ScrollView>
         </SafeAreaView>
     )
 }

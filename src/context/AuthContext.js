@@ -9,22 +9,9 @@ export const AuthProvider =({children})=>{
     const [userInfo, setUserInfo] = useState({});
     const [isSplashLoading, setIsSplashLoading] = useState(false);
     const [token, setToken] = useState(null);
-    const Login =(phone, password) =>{
-        console.log(phone, ' ', password);
-        const userDetails ={
-            user1:{
-                userData:{
-                    name: 'Rahul',
-                    email: 'rahul@123'
-                },
-                creds:{
-                    phone: '123456',
-                    password: '1234',
-                    token: '$123#'
-                }
-            }        
-        };
-        if(phone===userDetails.user1.creds.phone && userDetails.user1.creds.password === password){
+    const registerAuth =(userDetails) =>{
+        
+
             setIsLoading(true);
                 let userInfo=userDetails.user1;
                 setUserInfo(userInfo);
@@ -32,11 +19,18 @@ export const AuthProvider =({children})=>{
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 console.log(userInfo);
             setIsLoading(false);
-        }
-        else{
-            console.log('No user Found');
+        
+    }
+    const Login =(userDetails) =>{
+        
+                  setIsLoading(true);
+                let userInfo=userDetails.user1;
+                setUserInfo(userInfo);
+                setToken(userDetails.user1.creds.token);
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+                console.log(userInfo);
             setIsLoading(false);
-        }
+       
     }
     const Logout=()=>{
         setIsLoading(true);
@@ -70,6 +64,7 @@ export const AuthProvider =({children})=>{
     },[]);
     return (<AuthContext.Provider value={
         {Login,
+        registerAuth,
         userInfo,
         isLoading,
         Logout,

@@ -1,9 +1,9 @@
 import React, { createRef, useEffect, useRef, useState } from 'react';
-import { Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, Text, TextInput, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import {Alert, Pressable,SafeAreaView, View, StyleSheet, KeyboardAvoidingView, Image, Text, TextInput, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
 import images from '../constants/images';
 import { COLOR, FONTS, height } from '../constants/theme';
-const Otp = ({navigation}) => {
+const Otp = ({route, navigation}) => {
     const[enableShift, setEnableShift] = useState(false);
     const [numOne, setNumOne] = useState('');
     const [numTwo, setNumTwo] = useState('');
@@ -13,10 +13,22 @@ const Otp = ({navigation}) => {
     const num2= useRef(null);
     const num3= useRef(null);
     const num4= useRef(null);
-
+    const checkOtp = async () => {
+      if (numOne+numTwo+numThree+numFour ==JSON.stringify(otp) ){
+        Alert.alert("Success","OTP is Sucessful",[{text: 'OK', onPress: () => 
+        navigation.navigate('Register', {
+              phoneNumber: otherParam,
+              otherParam: 'phoneNumber',
+            }),
+      } ]);
+      }else {
+        Alert.alert("try again");
+      }
+    }
     useEffect(()=>{
       num1.current.focus();
     },[num1]);
+    const { otp, otherParam } = route.params;
     return (
      <KeyboardAvoidingView 
      keyboardVerticalOffset={-200}
@@ -115,7 +127,12 @@ const Otp = ({navigation}) => {
                                   : COLOR.pressed
                               },
                                styles.button
-                         ]} onPress={()=>{navigation.push('Register')}}>
+                         ]} onPress={()=>{
+                           console.log(num1+num2+num3+num4)
+                          checkOtp();
+                           //navigation.push('Register')
+                           
+                           }}>
                     <Text style={styles.text}>Done</Text>
                 </Pressable>          
             </View>

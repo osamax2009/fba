@@ -17,22 +17,25 @@ const Home = () =>{
   const {isLoading, userInfo} = useContext(AuthContext);
     return (
         <SafeAreaView style={{flex: 1, backgroundColor:'white'}}>
-        <Spinner visible={isLoading}/>
-          <View style={styles.header}>
-            <Text style={{flex:1, marginLeft:40, fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Home</Text>
-            <Image source={images.Profile} style={styles.image} />
-          </View> 
-        <View style={styles.backgroundContainer}>
-            <View style={styles.wrapper}>
-              <PoliceAlert imageSource={images.Police} text='Police' subtext='Interaction Alert'/>
+        <ScrollView>
+          <Spinner visible={isLoading}/>
+            <View style={styles.header}>
+              <Text style={{flex:1, marginLeft:40, fontWeight:'bold', color:'#ffffff', fontSize: 20}}>Home</Text>
+              <Image source={images.Profile} style={styles.image} />
             </View>
-        </View>
-        <View style={styles.selectOption}>
+          <View style={styles.backgroundContainer}>
+              <View style={styles.wrapper}>
+                <PoliceAlert imageSource={images.Police} text='Police' subtext='Interaction Alert'/>
+              </View>
+          </View>
+          <View style={styles.selectOption}>
+       
           <Options imageSource={images.Friends} text='SOS' subtext='Friends'/>
           <Options imageSource={images.Family} text='SOS' subtext='Family'/>
           <Options imageSource={images.Safe} text='Safe' subtext='End Call'/>
           <Options imageSource={images.Call} text='Call' subtext='Dial Call'/>
         </View>
+        </ScrollView>
         </SafeAreaView>
     )
 };
