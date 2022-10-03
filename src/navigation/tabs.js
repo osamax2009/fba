@@ -11,6 +11,7 @@ import AddRequest from '../components/invitationCard';
 import AddRequests from '../screens/AddRequests';
 import VideoContent from '../screens/Videos';
 import Icon from 'react-native-ico-material-design';
+
 const Tab = createBottomTabNavigator();
 
 const Tabs = () =>{

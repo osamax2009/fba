@@ -6,7 +6,7 @@ import { StyleSheet, View } from 'react-native';
 import Terms from '../screens/Terms';
 import { COLOR } from '../constants/theme';
 import { Avatar } from 'react-native-elements';
-import Tabs from './Tabs';
+import Tabs from './tabs';
 import Signin from '../screens/SignIn';
 import ForgetPassword from '../screens/ForgotPassword';
 import SignUp from '../screens/SignUp';

@@ -58,6 +58,7 @@ const Register = ({route, navigation}) => {
     }
   };
 
+
   const registernewuser = async () => {
     if (validateEmail() === false) {
       setEmailValidError('email address must be enter');
